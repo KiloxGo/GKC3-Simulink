@@ -1,0 +1,17 @@
+scope,label,file
+tokamak_integrated,tokamak_integrated,system.png
+tokamak_integrated/ACDC_Supply,ACDC_Supply,sid_308.png
+tokamak_integrated/ACDC_Supply/Grid_Regulator,Grid_Regulator,sid_304.png
+tokamak_integrated/ACDC_Supply/Grid_Regulator/Edynamics,Edynamics,sid_8.png
+tokamak_integrated/ACDC_Supply/Grid_Regulator/Qfilter,Qfilter,sid_7.png
+tokamak_integrated/ACDC_Supply/Grid_Regulator/Vfilter,Vfilter,sid_6.png
+tokamak_integrated/Load_Profile,Load_Profile,sid_342.png
+tokamak_integrated/Plasma_Controller,Plasma_Controller,sid_313.png
+tokamak_integrated/Plasma_Controller/Current_PI,Current_PI,sid_121.png
+tokamak_integrated/Plasma_Controller/Demagnetization,Demagnetization,sid_143.png
+tokamak_integrated/Plasma_Controller/PWM_Gates,PWM_Gates,sid_159.png
+tokamak_integrated/Plasma_Controller/PWM_Gates/DeadTime_A,DeadTime_A,sid_162.png
+tokamak_integrated/Plasma_Controller/PWM_Gates/DeadTime_B,DeadTime_B,sid_181.png
+tokamak_integrated/Plasma_Controller/Reference_Profile,Reference_Profile,sid_220.png
+tokamak_integrated/Power_Stage,Power_Stage,sid_324.png
+tokamak_integrated/System_Monitor,System_Monitor,sid_278.png

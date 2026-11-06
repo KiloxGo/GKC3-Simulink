@@ -1,0 +1,46 @@
+component BidirectionalACDC
+% Bidirectional average AC/DC interface
+% Lossless, grid-synchronous aggregate interface. This is an integration
+% assumption, not a switching bridge or a teacher-specified converter.
+% For aligned balanced voltages the projection equals line RMS voltage.
+
+nodes
+    ac = foundation.electrical.three_phase; % AC
+    p = foundation.electrical.electrical; % +
+    n = foundation.electrical.electrical; % -
+end
+
+parameters
+    voltage_ratio = {2.2, '1'}; % Nominal Vdc / AC line RMS voltage
+    frequency = {50, 'Hz'}; % Synchronous reference frequency
+    phase = {0, 'rad'}; % Phase-A synchronous reference angle
+end
+
+variables (Access=protected)
+    i_ac = {[0 0 0], 'A'};
+    i_dc = {0, 'A'};
+end
+
+branches
+    i_ac : ac.I -> *;
+    i_dc : p.i -> n.i;
+end
+
+intermediates
+    theta = 2*pi*frequency*time+phase;
+    modulation = voltage_ratio*sqrt(2/3)* ...
+        [sin(theta) sin(theta-2*pi/3) sin(theta+2*pi/3)];
+end
+
+equations
+    assert(voltage_ratio > 0);
+    assert(frequency > {0,'Hz'});
+    p.v-n.v == sum(modulation.*ac.V);
+    i_ac == -modulation*i_dc;
+end
+
+annotations
+    ac : Side=left;
+    [p,n] : Side=right;
+end
+end

@@ -1,0 +1,38 @@
+{
+  "matlab": "26.1.0.3346908 (R2026a) Update 5",
+  "models": [
+    {
+      "model": "droop_source",
+      "compiled": true
+    },
+    {
+      "model": "hbridge_rl",
+      "compiled": true
+    },
+    {
+      "model": "plasma_load",
+      "compiled": true
+    },
+    {
+      "model": "cs_rectifier_average",
+      "compiled": true
+    },
+    {
+      "model": "tokamak_integrated",
+      "compiled": true
+    },
+    {
+      "model": "hbridge_rl_verified",
+      "compiled": true
+    },
+    {
+      "model": "plasma_2khz_detail",
+      "compiled": true
+    }
+  ],
+  "startup_stop_s": 2,
+  "startup_time_equal": true,
+  "startup_joint_exact_equal": true,
+  "startup_max_abs_difference": 0,
+  "scope": "Model compilation and 2-second startup regression; earlier 30-second results are distributed separately."
+}

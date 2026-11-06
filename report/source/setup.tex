@@ -1,0 +1,156 @@
+\usepackage{graphicx,amsmath,amssymb,caption}
+\newcommand{\setbaselineskip}[1]{\setlength{\baselineskip}{#1}}
+% ===================== 参考文献 =====================
+\usepackage[backend=biber,style=gb7714-2015]{biblatex}
+\renewcommand{\bibfont}{\zihao{-5}\setbaselineskip{14bp}}
+\setlength{\bibitemsep}{2bp plus 1pt}
+\addbibresource{refs.bib}
+
+% ===================== 配色 =====================
+\usepackage{xcolor}
+\definecolor{accent}{HTML}{1F4E8C}
+\definecolor{accentlight}{HTML}{E8EEF6}
+\definecolor{rowtint}{HTML}{F5F7FA}
+\definecolor{inkmuted}{HTML}{55606E}
+% 四段链路的固定配色，图与表一致
+\definecolor{segbus}{HTML}{1F5FA8}
+\definecolor{segrect}{HTML}{C8461E}
+\definecolor{seghb}{HTML}{1E8A6E}
+\definecolor{segpl}{HTML}{7A4FB0}
+
+% ===================== 章节版式 =====================
+\ctexset{
+  chapter = {
+    format     = \raggedright\heiti\zihao{3}\color{accent},
+    nameformat = {},
+    name       = {},
+    number     = \arabic{chapter},
+    aftername  = \hspace{0.8em},
+    beforeskip = 0pt,
+    afterskip  = 10bp,
+    fixskip    = true,
+  },
+  section = {
+    format    = \raggedright\heiti\zihao{-4}\color{accent},
+    beforeskip= 10bp plus 2bp minus 1bp,
+    afterskip = 4bp,
+    aftername = \hspace{0.6em},
+  },
+  subsection = {
+    format    = \raggedright\heiti\zihao{5},
+    beforeskip= 6bp plus 1bp,
+    afterskip = 2bp,
+    aftername = \hspace{0.5em},
+  },
+}
+
+% ===================== 版心 =====================
+\usepackage{geometry}
+\geometry{a4paper, top=23mm, bottom=20mm, left=22mm, right=22mm, headheight=21pt, headsep=6mm, footskip=8mm}
+\setlength{\parskip}{0pt plus 1pt}
+
+% ===================== 页眉页脚 =====================
+\usepackage{fancyhdr}
+\fancypagestyle{reportbody}{%
+  \fancyhf{}%
+  \fancyhead[L]{\small\color{inkmuted}托卡马克电源系统全链路仿真与校核}%
+  \fancyhead[R]{\small\color{inkmuted}GKC3-Simulink 技术报告}%
+  \fancyfoot[C]{\small\color{inkmuted}\thepage}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+  \renewcommand{\headrule}{\hbox to\headwidth{\color{accent!35}\leaders\hrule height \headrulewidth\hfill}}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+
+% ===================== 图 =====================
+\graphicspath{{figures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\captionsetup{font=small, labelfont={bf,color=accent}, textfont=md, labelsep=quad, skip=3pt, justification=centering, singlelinecheck=true}
+\captionsetup[table]{skip=4pt, position=top}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{7pt plus 2pt minus 2pt}
+\setlength{\intextsep}{7pt plus 2pt minus 2pt}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.8}
+\usepackage{float}
+\newcommand{\twofig}[4]{%
+\begin{figure}[tbp]\centering
+\includegraphics[width=0.8\linewidth,height=84mm,keepaspectratio]{#1}\\[0pt]{\small (a)}\\[2pt]
+\includegraphics[width=0.8\linewidth,height=84mm,keepaspectratio]{#2}\\[0pt]{\small (b)}
+\caption{#3}\label{#4}
+\end{figure}}
+% 模型视图分辨率足够，并排放置
+\newcommand{\sidefig}[4]{%
+\begin{figure}[tbp]\centering
+\begin{minipage}[t]{0.49\linewidth}\centering\vspace{0pt}\includegraphics[width=\linewidth,height=58mm,keepaspectratio]{#1}\\[0pt]{\small (a)}\end{minipage}\hfill
+\begin{minipage}[t]{0.49\linewidth}\centering\vspace{0pt}\includegraphics[width=\linewidth,height=58mm,keepaspectratio]{#2}\\[0pt]{\small (b)}\end{minipage}
+\caption{#3}\label{#4}
+\end{figure}}
+\usepackage{placeins}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpsep}{8pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
+
+% ===================== 表 =====================
+\usepackage{array,booktabs,tabularx,makecell,multirow,longtable}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\setlength{\heavyrulewidth}{0.9pt}
+\setlength{\lightrulewidth}{0.45pt}
+\arrayrulecolor{accent}
+\newcommand{\tablefont}{\small\setlength{\extrarowheight}{0pt}\renewcommand{\arraystretch}{1.16}}
+% 浅色表头与隔行底色
+\newcommand{\headrow}{\rowcolor{accentlight}}
+\newcommand{\zebra}{\rowcolors{1}{}{rowtint}}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newenvironment{dtable}[2]{%
+  \begin{table}[#1]\centering\tablefont\zebra\caption{#2}%
+}{\end{table}}
+
+% ===================== 正文小结框 =====================
+\usepackage[most]{tcolorbox}
+\newtcolorbox{keybox}{enhanced, breakable=false, colback=accentlight!55, colframe=accentlight!55,
+  boxrule=0pt, arc=1.5pt, left=8pt, right=8pt, top=5pt, bottom=5pt, before skip=8pt, after skip=8pt,
+  borderline west={2pt}{0pt}{accent}, fontupper=\small}
+
+% ===================== 数学与单位 =====================
+\usepackage{siunitx}
+\sisetup{per-mode=symbol, detect-all=false, group-minimum-digits=5}
+\providecommand{\dd}{\mathop{}\!\mathrm{d}}
+\newcommand{\sub}[1]{_{\mathrm{#1}}}
+
+% ===================== 绘图 =====================
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, fit, calc, backgrounds}
+\usepackage[european resistors, american inductors]{circuitikz}
+
+% ===================== 代码 =====================
+\usepackage{listings}
+\lstdefinestyle{repro}{%
+  basicstyle=\ttfamily\footnotesize, columns=flexible, keepspaces=true, breaklines=true,
+  backgroundcolor=\color{rowtint}, frame=leftline, rulecolor=\color{accent}, framerule=1.5pt,
+  xleftmargin=1em, framexleftmargin=0.8em, aboveskip=6pt, belowskip=6pt,
+  commentstyle=\color{inkmuted}, showstringspaces=false, upquote=true, extendedchars=false}
+\lstnewenvironment{codeblock}[1][]{\lstset{style=repro,#1}}{}
+
+% ===================== 超链接 =====================
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=accent, citecolor=accent, urlcolor=accent,
+  pdftitle={托卡马克电源系统全链路仿真与校核}, pdfauthor={GKC3-Simulink contributors}}
+\urlstyle{tt}
+\newcommand{\repourl}{https://github.com/KiloxGo/GKC3-Simulink}
+
+% 正文行距
+\AtBeginDocument{\setbaselineskip{17bp}}
+
+% Allow long technical labels to wrap without changing report content.
+\setlength{\emergencystretch}{3em}

@@ -1,0 +1,5 @@
+{
+  "parameter_count": 30,
+  "all_exact_equal": true,
+  "scope": "Self-contained public initializer compared with the source CS initializer."
+}

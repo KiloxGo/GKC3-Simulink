@@ -1,0 +1,27 @@
+# Local simulation outputs and generated artifacts
+.DS_Store
+Project/Results/raw/
+Project/work/
+Project/codegen/
+slprj/
+*.slxc
+*.autosave
+*.slx.r20*
+__pycache__/
+.venv/
+report/source/*.aux
+report/source/*.bbl
+report/source/*.bcf
+report/source/*.blg
+report/source/*.fdb_latexmk
+report/source/*.fls
+report/source/*.log
+report/source/*.out
+report/source/*.run.xml
+report/source/*.toc
+report/source/main.pdf
+
+# Editable figure sessions are regenerated locally
+*.fig
+report/source/*.xdv
+report/source/*.synctex.gz

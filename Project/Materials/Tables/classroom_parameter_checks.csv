@@ -1,0 +1,54 @@
+﻿guide,section,model,sid,block,parameter,expected,actual,unit,status
+02,三 参数填写,droop_source,2,GridZ,R,0.1961161351,0.1961161351,ohm,matched
+02,三 参数填写,droop_source,2,GridZ,L,0.0031212852,0.0031212852,H,matched
+02,三 参数填写,droop_source,14,DroopGain,Gain,.05,0.05,pu/pu,matched
+03,一 主电路结构与搭建,hbridge_rl,2,Vdc_Cmd,Value,2200,2200,V,matched
+03,一 主电路结构与搭建,hbridge_rl,6,Q1,Ron,20e-6,20e-6,ohm,matched
+03,一 主电路结构与搭建,hbridge_rl,6,Q1,Vf,2,2,V,matched
+03,一 主电路结构与搭建,hbridge_rl,7,Q2,Ron,20e-6,20e-6,ohm,matched
+03,一 主电路结构与搭建,hbridge_rl,7,Q2,Vf,2,2,V,matched
+03,一 主电路结构与搭建,hbridge_rl,8,Q3,Ron,20e-6,20e-6,ohm,matched
+03,一 主电路结构与搭建,hbridge_rl,8,Q3,Vf,2,2,V,matched
+03,一 主电路结构与搭建,hbridge_rl,9,Q4,Ron,20e-6,20e-6,ohm,matched
+03,一 主电路结构与搭建,hbridge_rl,9,Q4,Vf,2,2,V,matched
+03,一 主电路结构与搭建,hbridge_rl,18,R_Load,R,.2,0.2,ohm,matched
+03,一 主电路结构与搭建,hbridge_rl,19,L_Load,l,20e-3,20e-3,H,matched
+03,二 PI 电流环搭建策略,hbridge_rl,100,Kp_Gain,Gain,12.566370614359172,12.566370614359172,V/A,matched
+03,二 PI 电流环搭建策略,hbridge_rl,101,Ki_Gain,Gain,0.0062831853071795875,0.006283185307179586,V/A,matched
+03,二 PI 电流环搭建策略,hbridge_rl,102,FF_Gain,Gain,.2,0.2,ohm,matched
+03,三 PWM 搭建策略,hbridge_rl,120,Clock_PWM,SampleTime,1e-6,1e-6,s,matched
+03,三 PWM 搭建策略,hbridge_rl,121,C_G1,Gain,2000,2000,Hz,matched
+03,四 死区连接与模型运行,hbridge_rl,140,DeadTime_Const,Value,2e-6,2e-6,s,matched
+03,四 死区连接与模型运行,hbridge_rl,153,DeadTime_Const,Value,2e-6,2e-6,s,matched
+03,二 PI 电流环搭建策略,hbridge_rl,24,Ref_Step1,Time,0.02,0.02,s,matched
+03,二 PI 电流环搭建策略,hbridge_rl,24,Ref_Step1,After,500,500,A,matched
+03,二 PI 电流环搭建策略,hbridge_rl,24,Ref_Step1,SampleTime,50e-6,50e-6,s,matched
+03,二 PI 电流环搭建策略,hbridge_rl,25,Ref_Step2,Time,0.12,0.12,s,matched
+03,二 PI 电流环搭建策略,hbridge_rl,25,Ref_Step2,After,-1000,-1000,A,matched
+03,二 PI 电流环搭建策略,hbridge_rl,25,Ref_Step2,SampleTime,50e-6,50e-6,s,matched
+03,二 PI 电流环搭建策略,hbridge_rl,26,Ref_Step3,Time,0.24,0.24,s,matched
+03,二 PI 电流环搭建策略,hbridge_rl,26,Ref_Step3,After,800,800,A,matched
+03,二 PI 电流环搭建策略,hbridge_rl,26,Ref_Step3,SampleTime,50e-6,50e-6,s,matched
+03,二 PI 电流环搭建策略,hbridge_rl,27,Ref_Step4,Time,0.36,0.36,s,matched
+03,二 PI 电流环搭建策略,hbridge_rl,27,Ref_Step4,After,-300,-300,A,matched
+03,二 PI 电流环搭建策略,hbridge_rl,27,Ref_Step4,SampleTime,50e-6,50e-6,s,matched
+03,四 死区连接与模型运行,hbridge_rl,29,En_Step1,Time,0.002,0.002,s,matched
+03,四 死区连接与模型运行,hbridge_rl,29,En_Step1,After,1,1,,matched
+03,四 死区连接与模型运行,hbridge_rl,30,En_Step2,Time,0.3,0.30,s,matched
+03,四 死区连接与模型运行,hbridge_rl,30,En_Step2,After,-1,-1,,matched
+03,四 死区连接与模型运行,hbridge_rl,31,En_Step3,Time,0.32,0.32,s,matched
+03,四 死区连接与模型运行,hbridge_rl,31,En_Step3,After,1,1,,matched
+04,2 设置电气元件参数,plasma_load,163,MI,L1,1,1,H,matched
+04,2 设置电气元件参数,plasma_load,163,MI,L2,1,1,H,matched
+04,2 设置电气元件参数,plasma_load,163,MI,k,.99999,0.99999,1,matched
+04,1—3 元件、参数与回路,plasma_load,162,Rcs,R,2e-5,20e-6,ohm,matched
+04,1—3 元件、参数与回路,plasma_load,167,R100k_L,R,1e5,1e5,ohm,matched
+04,1—3 元件、参数与回路,plasma_load,168,R100k_R,R,1e5,1e5,ohm,matched
+04,1—3 元件、参数与回路,plasma_load,165,VL,Lmin,1e-6,1e-6,H,matched
+04,1—3 元件、参数与回路,plasma_load,166,VR,Rmin,1e-5,1e-5,ohm,matched
+04,4 设置电阻和电感查表,plasma_load,429,Lp_schedule,BreakpointsForDimension1,[0 0.6 1.6 30],[0 0.6 1.6 30],,matched
+04,4 设置电阻和电感查表,plasma_load,429,Lp_schedule,Table,[150e-6 150e-6 100e-6 100e-6],[150e-6 150e-6 100e-6 100e-6],,matched
+04,4 设置电阻和电感查表,plasma_load,429,Lp_schedule,ExtrapMethod,Clip,Clip,,matched
+04,4 设置电阻和电感查表,plasma_load,428,Rp_schedule,BreakpointsForDimension1,[0 0.6 1.6 11.6 12.1 12.3 30],[0 0.6 1.6 11.6 12.1 12.3 30],,matched
+04,4 设置电阻和电感查表,plasma_load,428,Rp_schedule,Table,[0.015 0.015 0.01 0.01 0.01 100 100],[0.015 0.015 0.01 0.01 0.01 100 100],,matched
+04,4 设置电阻和电感查表,plasma_load,428,Rp_schedule,ExtrapMethod,Clip,Clip,,matched

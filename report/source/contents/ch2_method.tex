@@ -1,0 +1,50 @@
+% !TEX root = ../main.tex
+
+\chapter{建模环境与校核方法}
+\label{chap:method}
+
+\section{建模平台}
+
+全部模型在 MATLAB/Simulink R2026a 中搭建，电气部分采用 Simscape Electrical，控制部分采用 Simulink 基础模块。课程指导书基于 Specialized Power Systems 库编写，而 R2026a 已不再提供该库，因此各模型在保持拓扑、参数和时序不变的前提下，电气部分改用 Simscape 元件实现：IGBT 和二极管采用理想开关半导体模型，通态电阻 20~$\mu\Omega$、正向压降 2~V，与指导书一致；物理网络采用局部后向欧拉法离散求解。
+
+Simscape 半导体模型为分段线性模型，不含开关暂态、拖尾电流和反向恢复过程，因此本报告的分析和结论限于开关周期及更长的时间尺度。
+
+\section{三类独立校核}
+
+用控制器内部的中间量证明控制器正确，并不能提供新的信息。各段模型采用三类与控制器设计无关的关系验收，见表~\ref{tab:checks}。
+
+\begin{dtable}{htbp}{三类校核方法及其在各段的应用}
+\label{tab:checks}
+\begin{tabularx}{\linewidth}{P{0.13\linewidth}P{0.3\linewidth}L}
+\toprule
+\headrow 类别 & 含义 & 应用实例 \\
+\midrule
+解析式 & 只依赖拓扑和参数，不依赖 PI 参数 & 整流电压 $1.35U\sub{LL}\cos\alpha$，调制律 $\langle v\sub{AB}\rangle=U\sub{dc}m\sub{H}$，纹波估计 \\
+外部基准 & 换一种算法得到的结果 & 实验一的 ODE 基准八点，实验二的稳态相量解，实验三的负载回路方程 \\
+守恒量 & 能量和磁链的闭合关系 & 实验四磁链两条路径，联合模型的能量闭合与退磁能量链 \\
+\bottomrule
+\end{tabularx}
+\end{dtable}
+
+此外，53 项明确的课堂参数（电网阻抗、下垂系数、器件参数、PI 增益、PWM 时钟、死区常数、互感与查表数值等）已与指导书逐项核对，全部一致。这只是参数核对的结果，并不等于所有课程要求都已验收。
+
+\section{求解设置}
+
+各模型关心的现象相差很远，求解设置也各不相同（表~\ref{tab:solver}）。CS 整流的平均值模型用 0.01~s 步长跑完 460~s，整机模型则以 1~$\mu$s 定步长求解 30~s，共 3000 万步。第 \ref{chap:analysis} 章将进一步讨论时间尺度对建模方式的约束。
+
+\begin{dtable}{htbp}{各模型的时间尺度与求解设置}
+\label{tab:solver}
+\begin{tabularx}{\linewidth}{P{0.2\linewidth}LP{0.15\linewidth}P{0.08\linewidth}P{0.12\linewidth}}
+\toprule
+\headrow 模型 & 要观察的现象 & 步长 & 时长 & 规模 \\
+\midrule
+CS 整流（平均值） & 磁体电流与储能的秒级变化 & 0.01~s（上限） & 460~s & 4.6 万点 \\
+CS 整流（详细） & 换相与 300~Hz 纹波 & 50~$\mu$s & 0.5~s & 1 万步 \\
+10~kV 母线 & 工频周期与下垂收敛 & 50~$\mu$s（上限） & 2~s & 4 万点 \\
+H 桥 & 2~kHz 载波与 2~$\mu$s 死区 & 1~$\mu$s & 0.42~s & 42 万步 \\
+等离子体负载 & 开关周期与 30~s 磁链变化 & 10~$\mu$s & 30~s & 300 万步 \\
+整机联合 & 交流侧到负载的完整耦合 & 1~$\mu$s & 30~s & 3000 万步 \\
+晶闸管接口对照 & 换相、母线与制动的耦合 & 2~$\mu$s & 30~s & 1500 万步 \\
+\bottomrule
+\end{tabularx}
+\end{dtable}

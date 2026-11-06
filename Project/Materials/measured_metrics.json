@@ -1,0 +1,46 @@
+{
+  "bus": {
+    "window_s": [
+      1.8,
+      2
+    ],
+    "Vbus_pu": 0.98780304789499673,
+    "P_MW": 2.4393373781020204,
+    "Q_Mvar": 2.4393847139778289,
+    "E_pu": 1.01704655302269
+  },
+  "hbridge": {
+    "shoot_through_A": 0,
+    "shoot_through_B": 0,
+    "statistics_note": "Segment summaries use their final 20%; descriptive statistics, not acceptance thresholds."
+  },
+  "plasma": {
+    "plateau_window_s": [
+      6,
+      11
+    ],
+    "Ip_mean_A": 10006.912733616031,
+    "Ics_mean_A": 10756.874441061531,
+    "plasma_power_mean_W": 1.0014219255177546E+6,
+    "coil_power_mean_W": 1.0879337696954892E+6,
+    "ripple_window_s": [
+      1.8,
+      1.85
+    ],
+    "Ip_ripple_pp_A": 304.028767524509,
+    "demag_window_s": [
+      12.3,
+      30
+    ],
+    "demag_net_export_J": 565255.19330579485,
+    "flux_residual_max_abs_Wb": 0.011140070445975425,
+    "note": "All metrics describe the saved model; they do not establish classroom compliance."
+  },
+  "cs": {
+    "Vdc_mean_V": 1500,
+    "Ics_peak_A": 39746.099877139386,
+    "Pabs_peak_W": 5.9619149815709077E+7,
+    "BCS_peak_T": 11.4822066311736,
+    "Emag_peak_J": 7.57067585496896E+8
+  }
+}

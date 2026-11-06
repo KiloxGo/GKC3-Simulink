@@ -1,0 +1,80 @@
+% !TEX root = ../main.tex
+
+\chapter{绪论}
+\label{chap:intro}
+
+\section{研究背景}
+
+托卡马克依靠中央螺线管（CS）的电流变化在等离子体中感应出环向电流，一次放电要经历预磁化、击穿、升流、平顶和降流几个阶段\cite{wesson2011tokamaks}。对供电系统而言，这意味着一条从交流电网到线圈的功率链：电网提供有功和无功，变压器和可控整流器产生可调直流电压，变流器在毫秒尺度上控制线圈电流，负载参数则随放电阶段变化。
+
+课程的分项实验各取这条链上的一节：实验一研究 CS 线圈的 1.5~kV 整流供电\cite{guide-cs}，实验二研究 10~kV 母线的下垂调压\cite{guide-droop}，实验三研究 H 桥电流环\cite{guide-hbridge}，实验四把 H 桥的负载换成互感耦合的可变等离子体负载\cite{guide-plasma}。这些模型的源假设各不相同：实验一用理想 10~kV 电源，实验二用 100~MVA 的等值电网，实验三、四用 2200~V 理想直流母线。
+
+本报告把这些工作整合为一条完整的链路（图~\ref{fig:chain}），分三个层次展开：第 \ref{chap:bus}--\ref{chap:plasma} 章按功率流向逐段给出建模与校核；第 \ref{chap:joint} 章去掉各段之间的独立电源，把全部环节接入同一电气网络做联合仿真；第 \ref{chap:analysis} 章横向比较各段的量级与时间尺度，并定量回答分段模型无法回答的接口问题。
+
+\begin{figure}[htbp]
+\centering
+\makebox[\linewidth][c]{\begin{tikzpicture}[font=\footnotesize, >={Latex[length=1.6mm]},
+  block/.style={draw=#1, fill=#1!8, rounded corners=1.5pt, line width=0.6pt, align=center,
+                minimum width=15.6mm, minimum height=11mm, inner sep=1pt},
+  flow/.style={->, line width=0.7pt, color=black!70},
+  seglabel/.style={font=\footnotesize\bfseries, text=#1},
+  note/.style={font=\scriptsize, text=inkmuted, align=center}]
+\node[block=segbus] (src) at (0,0) {受控\\三相源};
+\node[block=segbus] (zg)  at (1.98,0) {电网阻抗\\$Z_g$};
+\node[block=segrect] (tr)  at (3.96,0) {变压器\\10/1.2~kV};
+\node[block=segrect] (rec) at (5.94,0) {六脉波\\全控桥};
+\node[block=segrect] (dc)  at (7.92,0) {平波电抗\\母线电容};
+\node[block=seghb]  (hb)  at (9.90,0) {H 桥\\电流环};
+\node[block=segpl]  (m)   at (11.88,0) {互感\\耦合};
+\node[block=segpl]  (pl)  at (13.86,0) {$R\sub{p}(t)$\\$L\sub{p}(t)$};
+\draw[flow] (src)--(zg);
+\draw[flow] (zg)--(tr);
+\draw[flow] (tr)--(rec);
+\draw[flow] (rec)--(dc);
+\draw[flow,<->] (dc)--(hb);
+\draw[flow,<->] (hb)--(m);
+\draw[flow,<->] (m)--(pl);
+\node[block=inkmuted, minimum height=8mm, below=7mm of dc] (br) {制动 / 泄放};
+\draw[flow] (dc)--(br);
+\node[block=segbus, minimum height=8mm, below=7mm of $(src)!0.5!(zg)$, minimum width=28mm] (ctl) {$Q$--$V$ 下垂与电压 PI};
+\draw[flow,dashed] (zg.south) -- (zg.south|-ctl.north);
+\draw[flow,dashed] (src.south|-ctl.north) -- (src.south);
+\node[seglabel=segbus, above=7.7mm of $(src)!0.5!(zg)$] (l1) {实验二};
+\node[seglabel=segrect, above=2.2mm of rec] (l2) {实验一};
+\node[seglabel=seghb, above=2.2mm of hb] (l3) {实验三};
+\node[seglabel=segpl, above=7.7mm of $(m)!0.5!(pl)$] (l4) {实验四};
+\draw[segbus, line width=1pt] ($(src.north west)+(0,1.5mm)$) -- ($(zg.north east)+(0,1.5mm)$);
+\draw[segrect, line width=1pt] ($(tr.north west)+(0,1.5mm)$) -- ($(dc.north east)+(0,1.5mm)$);
+\draw[seghb, line width=1pt] ($(hb.north west)+(0,1.5mm)$) -- ($(hb.north east)+(0,1.5mm)$);
+\draw[segpl, line width=1pt] ($(m.north west)+(0,1.5mm)$) -- ($(pl.north east)+(0,1.5mm)$);
+\node[note, below=7.5mm of $(m)!0.5!(pl)$, text width=36mm] {双向箭头：退磁时\\能量经 H 桥返回母线};
+\end{tikzpicture}}
+\caption{托卡马克供电链路与各实验的对应关系。第 \ref{chap:joint} 章的联合模型把这些环节接入同一电气网络。}
+\label{fig:chain}
+\end{figure}
+
+\section{模型层次与主要结果}
+
+表~\ref{tab:summary} 汇总了各项工作的结果及其校核依据。本报告的主要工作有三点：
+
+\begin{itemize}
+  \item 分段校核：四个模型统一在 R2026a 的 Simscape Electrical 上重建，每段都用独立于控制器的关系验收。
+  \item 全链路联合：把各环节接入同一电气网络，在一次 30~s 连续运行中观察交流侧、直流母线、H 桥和等离子体负载，并用累计能量闭合功率账目；另用晶闸管整流接口的联合模型做交叉对照。
+  \item 接口分析：用实验二的母线阻抗核算实验一的负载，得到这条母线所能承受的负载上限；把四段的时间尺度和“指令—实际”偏差放在同一口径下比较。
+\end{itemize}
+
+\begin{dtable}{htbp}{各项仿真工作的主要结果}
+\label{tab:summary}
+\begin{tabularx}{\linewidth}{P{0.2\linewidth}P{0.26\linewidth}P{0.2\linewidth}L}
+\toprule
+\headrow 环节 & 主要指标 & 结果 & 校核依据 \\
+\midrule
+10~kV 母线 & 默认工况母线电压 & 0.987803~pu & 相量解偏差 $2.8\times10^{-8}$~pu \\
+CS 整流供电 & 电流峰值 / 输入功率峰值 & 39.746~kA / 59.619~MW & 八点 ODE 基准，电流差 $\le0.247\%$ \\
+H 桥电流环 & 五段稳态误差 & 0.68--1.77~A & 回路方程稳态残差 2.85~V（均方根） \\
+可变等离子体负载 & 平台段电流 / 功率 & 10.01~kA / 1.001~MW & 磁链两条路径残差约 0.011~Wb \\
+整机联合 & 平台段母线 / 等离子体电流 & 2199.98~V / 9999.28~A & 接口能量闭合，退磁净回馈 0.559~MJ \\
+晶闸管接口对照 & 平台段母线 / 等离子体电流 & 1499.81~V / 10.0000~kA & 直流能量残差 0.00318\% \\
+\bottomrule
+\end{tabularx}
+\end{dtable}

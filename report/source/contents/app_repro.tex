@@ -1,0 +1,38 @@
+% !TEX root = ../main.tex
+\chapter{公开版复现方法}
+\label{app:repro}
+\sloppy
+公开模型需要 MATLAB/Simulink R2026a、Simscape 与 Simscape Electrical。整机采用 accelerator 模式，还需可用的本机编译器。请在仓库根目录执行：
+\begin{codeblock}[language=Matlab]
+addpath('Project')
+start_project
+run_integrated('startup')
+export_integrated_materials('startup')
+run_integrated('full')
+export_integrated_materials('full')
+verify_hbridge_deadtime
+run_baselines
+export_writing_materials
+run_pwm_study
+export_pwm_study
+\end{codeblock}
+\texttt{run\_baselines} 依次运行下垂电源、原 H 桥、可变负载及 460~s CS 平均值模型。原始 MAT 生成于 \texttt{Project/Results/raw}，不随 Git 分发。PNG、PDF 和 CSV 可直接读取；可编辑 FIG 由导出脚本生成。
+\section{历史对照的可用范围}
+正文保留原报告的母线六工况、ODE 基准和晶闸管接口联合模型的对照分析及数值。当前公开快照不分发全部历史实现，尤其不包含另一套晶闸管接口联合模型；因此相应结果作为报告中的历史对照材料，不宣称可以仅用本快照重新计算。当前整机采用双向平均值 AC/DC，具体边界见仓库的模型假设说明。
+\section{主要模型}
+\begin{dtable}{H}{公开版模型文件}
+\begin{tabularx}{\linewidth}{P{0.62\linewidth}L}
+\toprule
+\headrow 路径 & 内容 \\
+\midrule
+\texttt{Project/Models/tokamak\_integrated.slx} & 整机联合模型 \\
+\texttt{Project/Models/cs\_rectifier\_average.slx} & 独立 460~s CS 模型 \\
+\texttt{Project/Models/droop\_source.slx} & 下垂电源模型 \\
+\texttt{Project/Models/hbridge\_rl.slx} & 原 H 桥基线 \\
+\texttt{Project/Models/plasma\_load.slx} & 独立可变负载 \\
+\texttt{Project/Variants/hbridge\_rl\_verified.slx} & H 桥死区修正版 \\
+\texttt{Project/Variants/plasma\_2khz\_detail.slx} & PWM 敏感性变体 \\
+\bottomrule
+\end{tabularx}
+\end{dtable}
+报告使用 CTEX、XeLaTeX 与 biber 编译，入口为 \texttt{report/source/main.tex}。从该目录执行 \texttt{latexmk -xelatex main.tex}。报告分析图保留为既有导出文件；联合模型与模块图表可使用公开脚本重新生成。

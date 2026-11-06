@@ -1,0 +1,54 @@
+{
+  "files": [
+    {
+      "path": "Project/Components/+gkc/BidirectionalACDC.ssc",
+      "sha256": "7326f49312fb8085b4557603ec3a8cf7dc9a72df1f98fe4d7ac2e84678b55e9e",
+      "size_bytes": 1160
+    },
+    {
+      "path": "Project/Components/gkc_lib.slx",
+      "sha256": "b7e8e2d3e779a22dcb7d2d26cdb8bfba81385822486214b00f61cb2cbf553d9f",
+      "size_bytes": 40789
+    },
+    {
+      "path": "Project/Models/cs_rectifier_average.slx",
+      "sha256": "a4a977a3f3393532a66aa8f5639ee8579fe515568de2c4e07fecdfdaf2814eca",
+      "size_bytes": 2724320
+    },
+    {
+      "path": "Project/Models/droop_source.slx",
+      "sha256": "4880a229397c79bed0b0fd5bfd759aeacacb6b4cc667813bcbaadb45df858dc5",
+      "size_bytes": 154155
+    },
+    {
+      "path": "Project/Models/hbridge_rl.slx",
+      "sha256": "406668b4d33333524626aa092b666ffa15afee203c0c0f91d5ac99a1a2a0f113",
+      "size_bytes": 351439
+    },
+    {
+      "path": "Project/Models/plasma_load.slx",
+      "sha256": "6bbec268626a88cc3c51fcb0d614120b5c50ff80ae65e94f8a34b80f599d9124",
+      "size_bytes": 363852
+    },
+    {
+      "path": "Project/Models/tokamak_integrated.slx",
+      "sha256": "5ac343bc80f0e1607029bba5001b630518c1d81614460c3d5ffba817c12ee8e8",
+      "size_bytes": 496253
+    },
+    {
+      "path": "Project/Variants/hbridge_rl_verified.slx",
+      "sha256": "32e7491621b063baa58872a6c6c9a92dfafbf8d1db35d58b26c64b61d89f5a34",
+      "size_bytes": 352496
+    },
+    {
+      "path": "Project/Variants/plasma_2khz_detail.slx",
+      "sha256": "f67e90987ee02e09eb67ab07b75036cad447356e0dca473c16d396a2a1dbad71",
+      "size_bytes": 378912
+    },
+    {
+      "path": "report/GKC3-Simulink-Technical-Report.pdf",
+      "sha256": "db59f90977ddd77d677f1229eda20a3b683fbbe811d851ad1d340f59a5bfecf6",
+      "size_bytes": 6540200
+    }
+  ]
+}

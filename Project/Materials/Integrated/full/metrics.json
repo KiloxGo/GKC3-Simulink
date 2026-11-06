@@ -1,0 +1,33 @@
+{
+  "scenario": "full",
+  "stop_s": 30.000000000000004,
+  "finite": true,
+  "Vdc_min_max_V": [
+    2187.0200455793961,
+    2219.1787939767933
+  ],
+  "Ics_final_A": -4.2117859898543805E-8,
+  "Ip_final_A": 2.5295432840916822E-14,
+  "converter_power_residual_max_W": 9.3132257461547852E-10,
+  "converter_energy_residual_J": 0,
+  "dc_buffer_energy_change_J": -1.7966143786907196E-7,
+  "net_energies_ac_dc_bridge_J": [
+    1.1105915361338982E+7,
+    1.1105915361338982E+7,
+    1.0596439782315696E+7
+  ],
+  "gate_measurements": {
+    "window_s": [
+      29.979999999999997,
+      29.999999999999996
+    ],
+    "sample_s": 1.0000000010279564E-6,
+    "overlap_A_samples": 0,
+    "overlap_B_samples": 0,
+    "leg_1_deadtime_us": 2,
+    "leg_2_deadtime_us": 2
+  },
+  "Ip_mean_6_to_11_s_A": 9999.2762260373529,
+  "Ip_ripple_1p8_to_1p85_s_A": 226.54720213292057,
+  "net_ac_energy_after_12p3_s_J": -559210.35828855261
+}

@@ -1,0 +1,16 @@
+{
+  "pages": 34,
+  "technical_chapters_1_to_9_byte_identical": true,
+  "abstracts_and_parameter_appendix_byte_identical": true,
+  "identity_text_scan_passed": true,
+  "embedded_attachments": 0,
+  "build": "XeLaTeX + biber; neutral CTEX class",
+  "public_edits": [
+    "cover",
+    "headers",
+    "author metadata",
+    "internal-reference attribution",
+    "collaboration chapter",
+    "reproduction appendix"
+  ]
+}

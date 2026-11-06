@@ -1,0 +1,25 @@
+% !TEX root = ../main.tex
+
+\begin{abstract}[zh]
+托卡马克的磁体与等离子体供电可以看作一条从交流电网到线圈的功率链。本报告整合课程的仿真工作：10~kV 母线下垂调压、CS 线圈 1.5~kV 整流供电、H 桥电流环、互感耦合可变等离子体负载，以及把这些环节接入同一电气网络的整机联合仿真。全部模型基于 MATLAB/Simulink R2026a 与 Simscape Electrical 搭建，校核采用与控制器设计无关的解析式、外部基准和守恒量。
+
+分段结果为：母线六个工况与独立相量解的偏差不超过 $7.8\times10^{-5}$~pu；整流供电 460~s 全过程的 CS 电流峰值为 39.746~kA、输入功率峰值为 59.619~MW，八个关键时刻的电流与 ODE 基准最大相差 0.247\%；H 桥五段给定的稳态误差为 0.68--1.77~A，修正死区实现后全部换相间隔为 2~$\mu$s，无桥臂直通。整机模型以 1~$\mu$s 步长连续运行 30~s，平台段母线均值 2199.98~V，等离子体电流均值 9999.28~A，退磁时向交流侧净回馈 0.559~MJ。另一套晶闸管整流接口的联合模型给出了一致的负载侧结果，线圈侧能量相差 0.015\%。
+
+横向比较表明，约 1~MW 的联合运行负载对 100~MVA 母线几乎没有影响，而实验一 59.6~MW 的峰值负载需要 1.46~pu 的内部电势，超出 1.15~pu 限幅，短路容量需提高到约 270~MVA 以上才能满足。
+
+\vspace{0.5em}
+\noindent\textbf{项目仓库：}\url{\repourl}
+\vspace{0.3em}
+\end{abstract}
+
+\begin{abstract}[en]
+The supply of a tokamak's magnets and plasma forms a power chain from the AC grid to the coils. This report consolidates the simulation work of the course: droop voltage regulation of a 10~kV bus, the 1.5~kV rectifier feeding the central solenoid (CS), an H-bridge current loop, a mutually coupled variable plasma load, and an integrated co-simulation that places these stages in one electrical network. All models are built with MATLAB/Simulink R2026a and Simscape Electrical, and are verified against analytic relations, external baselines and conserved quantities that are independent of the controller design.
+
+Segment results: the six bus cases differ from an independent phasor solution by at most $7.8\times10^{-5}$~pu; the 460~s rectifier run reaches a CS current of 39.746~kA and an input power of 59.619~MW, with a maximum current deviation of 0.247\% from the ODE baseline at eight key instants; the H-bridge shows steady-state errors of 0.68--1.77~A over five reference segments, and after correcting the dead-time logic every commutation gap is 2~$\mu$s with no shoot-through. The integrated model runs continuously for 30~s at a 1~$\mu$s step: on the plateau the mean DC bus voltage is 2199.98~V and the mean plasma current is 9999.28~A, and demagnetization returns a net 0.559~MJ to the AC side. A second co-simulation with a thyristor rectifier interface gives consistent load-side results, with coil energies differing by 0.015\%.
+
+Comparison across stages shows that the joint load of about 1~MW barely affects the 100~MVA bus, whereas the 59.6~MW peak of the rectifier experiment would require an internal EMF of 1.46~pu, beyond the 1.15~pu limit; the short-circuit capacity must exceed about 270~MVA.
+
+\vspace{0.5em}
+\noindent\textbf{Repository:} \url{\repourl}
+\vspace{0.3em}
+\end{abstract}

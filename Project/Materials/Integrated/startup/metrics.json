@@ -1,0 +1,31 @@
+{
+  "scenario": "startup",
+  "stop_s": 2,
+  "finite": true,
+  "Vdc_min_max_V": [
+    2196.0666555837834,
+    2203.1669143614686
+  ],
+  "Ics_final_A": 10099.143195750396,
+  "Ip_final_A": 9999.7523178511383,
+  "converter_power_residual_max_W": 6.9849193096160889E-10,
+  "converter_energy_residual_J": 1.1641532182693481E-10,
+  "dc_buffer_energy_change_J": 0.50589801384136079,
+  "net_energies_ac_dc_bridge_J": [
+    826771.07975474827,
+    826771.07975474815,
+    787517.26372380264
+  ],
+  "gate_measurements": {
+    "window_s": [
+      1.98,
+      2
+    ],
+    "sample_s": 9.9999999991773336E-7,
+    "overlap_A_samples": 0,
+    "overlap_B_samples": 0,
+    "leg_1_deadtime_us": 2,
+    "leg_2_deadtime_us": 2
+  },
+  "Ip_ripple_1p8_to_1p85_s_A": 226.54720213292057
+}

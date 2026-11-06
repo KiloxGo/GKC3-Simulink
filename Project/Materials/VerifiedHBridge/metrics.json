@@ -1,0 +1,7 @@
+{
+  "stop_s": 0.42,
+  "overlap_A_samples": 0,
+  "overlap_B_samples": 0,
+  "leg_1_deadtime_us": 2,
+  "leg_2_deadtime_us": 2
+}

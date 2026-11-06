@@ -1,0 +1,15 @@
+{
+  "scenario": "full",
+  "stop_s": 30,
+  "wall_seconds": 958.5051717083334,
+  "matlab_version": "26.1.0.3346908 (R2026a) Update 5",
+  "global_solver": "ode3",
+  "global_step_s": 1e-06,
+  "local_solver": "Backward Euler",
+  "local_step_s": 1e-06,
+  "linear_algebra": "Sparse",
+  "joint_logging_step_s": 1e-05,
+  "gate_logging_step_s": 1e-06,
+  "raw_file": "raw/integrated/full.mat",
+  "nonlinear_iterations": 3
+}

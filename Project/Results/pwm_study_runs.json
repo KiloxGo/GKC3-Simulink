@@ -1,0 +1,22 @@
+[
+  {
+    "case_name": "inherited_2khz",
+    "model": "plasma_load",
+    "stop_s": 30,
+    "wall_seconds": 37.027491625,
+    "global_step_s": 1E-5,
+    "carrier_Hz": 2000,
+    "deadtime_constant_s": 0,
+    "raw_file": "raw/variants/inherited_2khz.mat"
+  },
+  {
+    "case_name": "detail_full",
+    "model": "plasma_2khz_detail",
+    "stop_s": 30,
+    "wall_seconds": 335.49145975,
+    "global_step_s": 1E-6,
+    "carrier_Hz": 2000,
+    "deadtime_constant_s": 2E-6,
+    "raw_file": "raw/variants/detail_full.mat"
+  }
+]

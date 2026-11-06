@@ -1,0 +1,67 @@
+% !TeX encoding = UTF-8
+% !TeX program = xelatex
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[UTF8,zihao=5,oneside,openany,fontset=fandol]{ctexbook}
+
+\input{setup}
+\newenvironment{nomenclature}{\chapter*{主要符号}}{}
+\NewDocumentEnvironment{abstract}{O{zh}}{\chapter*{\ifstrequal{#1}{en}{Abstract}{摘要}}}{}
+
+
+\begin{document}
+
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\centering
+\vspace*{25mm}
+{\color{accent}\sffamily\Large GKC3-Simulink\par}
+\vspace{18mm}
+{\heiti\Huge 托卡马克电源系统\par}
+\vspace{5mm}
+{\heiti\Huge 全链路仿真与校核\par}
+\vspace{12mm}
+{\Large Full-Chain Simulation and Verification\\of a Tokamak Power Supply System\par}
+\vspace{16mm}
+{\large 公开技术报告 · Public technical report\par}
+\vfill
+{\large GKC3-Simulink contributors\par}
+\vspace{5mm}
+\url{\repourl}\par
+\vspace{8mm}
+{\large 2026 年 11 月\par}
+\end{titlepage}
+\frontmatter
+\hypersetup{pageanchor=true}
+\pagestyle{plain}
+\input{contents/abstract}
+\hypersetup{linkcolor=black}
+\tableofcontents
+\hypersetup{linkcolor=accent}
+% 符号表接排在目录之后，不单独占页
+\ctexset{chapter/break={\par\addvspace{14bp}}}
+\input{contents/nomenclature}
+
+\mainmatter
+\pagestyle{reportbody}
+% 正文各章连续排版，浮动体不跨章
+\ctexset{chapter/break={\FloatBarrier\par\addvspace{14bp}}}
+\input{contents/ch1_intro}
+\input{contents/ch2_method}
+\input{contents/ch3_bus}
+\input{contents/ch4_rectifier}
+\input{contents/ch5_hbridge}
+\input{contents/ch6_plasma}
+\input{contents/ch7_joint}
+\input{contents/ch8_analysis}
+\input{contents/ch9_conclusion}
+\input{contents/ch10_workflow}
+
+\FloatBarrier
+\printbibliography[heading=bibintoc]
+
+\appendix
+\captionsetup{list=no}
+\input{contents/app_params}
+\input{contents/app_repro}
+
+\end{document}

@@ -1,0 +1,15 @@
+{
+  "scenario": "startup",
+  "stop_s": 2,
+  "wall_seconds": 49.140975166666664,
+  "matlab_version": "26.1.0.3346908 (R2026a) Update 5",
+  "global_solver": "ode3",
+  "global_step_s": 1E-6,
+  "local_solver": "Backward Euler",
+  "local_step_s": 1E-6,
+  "linear_algebra": "Sparse",
+  "nonlinear_iterations": 3,
+  "joint_logging_step_s": 1E-5,
+  "gate_logging_step_s": 1E-6,
+  "raw_file": "raw/integrated/startup.mat"
+}

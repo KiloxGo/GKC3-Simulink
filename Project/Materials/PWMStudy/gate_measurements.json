@@ -1,0 +1,36 @@
+{
+  "detail_startup": {
+    "window_s": [
+      1.98,
+      2
+    ],
+    "sample_s": 9.9999999991773336E-7,
+    "overlap_A_samples": 0,
+    "overlap_B_samples": 0,
+    "leg_1_deadtime_us": [
+      2,
+      3
+    ],
+    "leg_2_deadtime_us": [
+      2,
+      3
+    ]
+  },
+  "detail_full": {
+    "window_s": [
+      29.979999999999997,
+      29.999999999999996
+    ],
+    "sample_s": 1.0000000010279564E-6,
+    "overlap_A_samples": 0,
+    "overlap_B_samples": 0,
+    "leg_1_deadtime_us": [
+      2,
+      3
+    ],
+    "leg_2_deadtime_us": [
+      2,
+      3
+    ]
+  }
+}
