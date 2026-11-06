@@ -6,6 +6,8 @@
 
 **托卡马克电源系统 · 从交流母线到等离子体负载的联合电气仿真**
 
+[![Release](https://img.shields.io/github/v/release/KiloxGo/GKC3-Simulink?style=flat-square)](https://github.com/KiloxGo/GKC3-Simulink/releases/latest)
+[![License](https://img.shields.io/badge/License-MIT-64748B?style=flat-square)](LICENSE)
 [![MATLAB](https://img.shields.io/badge/MATLAB-R2026a-0076A8?style=flat-square)](docs/getting-started.md)
 [![Simscape](https://img.shields.io/badge/Simscape-Electrical-138A82?style=flat-square)](docs/architecture.md)
 [![Evidence](https://img.shields.io/badge/Simulation-30%20s%20recorded-3273DC?style=flat-square)](docs/validation.md)
